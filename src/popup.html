@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>DeepSeek 翻译</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <img class="logo" src="../icons/icon48.png" alt="" />
+      <div class="titles">
+        <h1>DeepSeek 网页翻译</h1>
+        <p id="status">正在连接页面…</p>
+      </div>
+    </header>
+
+    <button id="toggle" class="primary" type="button" disabled>翻译此页</button>
+
+    <section class="field">
+      <div class="label">对照方式</div>
+      <div class="seg" id="mode">
+        <button class="seg-btn" data-mode="bilingual" type="button">中英对照</button>
+        <button class="seg-btn" data-mode="replace" type="button">仅译文</button>
+      </div>
+    </section>
+
+    <section class="field">
+      <label class="label" for="lang">目标语言</label>
+      <select id="lang"></select>
+    </section>
+
+    <footer class="foot">
+      <button id="openOptions" class="link" type="button">设置 API / 模型</button>
+      <span class="kbd">Alt + T</span>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>DeepSeek 网页翻译 · 设置</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <img src="../icons/icon48.png" alt="" />
+        <div>
+          <h1>DeepSeek 网页翻译</h1>
+          <p>逐段翻译 · 中英对照 · 划词翻译 · 快捷键 <kbd>Alt</kbd> + <kbd>T</kbd></p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>接口</h2>
+
+        <label class="row">
+          <span class="k">
+            API Key
+            <em>只保存在本机浏览器，不会上传到别处</em>
+          </span>
+          <span class="v key-wrap">
+            <input id="apiKey" type="password" spellcheck="false" placeholder="sk-..." />
+            <button id="toggleKey" class="ghost" type="button">显示</button>
+          </span>
+        </label>
+
+        <label class="row">
+          <span class="k">接口地址<em>一般不用改</em></span>
+          <span class="v">
+            <input id="baseUrl" type="text" spellcheck="false" />
+          </span>
+        </label>
+
+        <label class="row">
+          <span class="k">模型</span>
+          <span class="v">
+            <input id="model" type="text" list="models" spellcheck="false" />
+            <datalist id="models">
+              <option value="deepseek-chat">deepseek-chat · 通用，快且便宜</option>
+              <option value="deepseek-reasoner">deepseek-reasoner · 思考模型，更慢更贵</option>
+            </datalist>
+          </span>
+        </label>
+
+        <div class="row">
+          <span class="k"></span>
+          <span class="v">
+            <button id="test" class="secondary" type="button">测试连接</button>
+            <span id="testResult" class="result"></span>
+          </span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>翻译行为</h2>
+
+        <label class="row">
+          <span class="k">目标语言</span>
+          <span class="v">
+            <select id="targetLang"></select>
+          </span>
+        </label>
+
+        <label class="row">
+          <span class="k">对照方式</span>
+          <span class="v">
+            <select id="mode">
+              <option value="bilingual">中英对照（译文插在原文下方）</option>
+              <option value="replace">仅显示译文（隐藏原文）</option>
+            </select>
+          </span>
+        </label>
+
+        <label class="row">
+          <span class="k">悬浮按钮<em>在网页右侧显示「译」圆钮，点一下就地翻译，可上下拖动</em></span>
+          <span class="v">
+            <label class="switch">
+              <input id="showFab" type="checkbox" />
+              <span>显示</span>
+            </label>
+          </span>
+        </label>
+
+        <label class="row">
+          <span class="k">每批段落数<em>越大越快，但单次失败影响面更大</em></span>
+          <span class="v"><input id="batchItems" type="number" min="1" max="60" /></span>
+        </label>        <label class="row">
+          <span class="k">每批字符数</span>
+          <span class="v"><input id="batchChars" type="number" min="200" max="8000" step="100" /></span>
+        </label>
+
+        <label class="row">
+          <span class="k">并发请求数<em>1~6，遇到 429 就调小</em></span>
+          <span class="v"><input id="concurrency" type="number" min="1" max="6" /></span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>文献笔记</h2>
+
+        <div class="row">
+          <span class="k">
+            保存文件夹
+            <em>在文章页点「摘」整理完，面板底部就能选或换文件夹</em>
+          </span>
+          <span class="v">
+            <span id="dirName" class="dir-chip">未选择</span>
+            <button id="openNotes" class="secondary" type="button">打开笔记页</button>
+          </span>
+        </div>
+
+        <p class="note-line">
+          保存位置直接在那个「文献总结」面板里设置：点「选择文件夹」选一次，之后一直用它；想换点「更改」即可，不会再跳到别的页面。
+        </p>
+      </section>
+
+      <div class="actions">
+        <button id="save" class="primary" type="button">保存设置</button>
+        <button id="reset" class="ghost" type="button">恢复默认</button>
+        <span id="saveResult" class="result"></span>
+      </div>
+
+      <footer class="tips">
+        <p><strong>怎么用：</strong>打开任意网页 → 点工具栏上的扩展图标 → 「翻译此页」；或直接按 <kbd>Alt</kbd>+<kbd>T</kbd>。选中文字会浮出「译」按钮，右键菜单也可以。</p>
+        <p><strong>费用：</strong>整页翻译是按实际消耗的 token 计费，一篇长文通常几分钱。相同段落会被缓存，重复翻译同一页几乎不花钱。</p>
+        <p><strong>隐私：</strong>只把你正在看的网页文字发给 DeepSeek 官方接口，API Key 存在浏览器的 <code>chrome.storage.local</code> 里。</p>
+      </footer>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

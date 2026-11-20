@@ -1,0 +1,60 @@
+/* ------------------------------------------------------------------
+   译文块（中英对照时插在每段原文下面）
+   使用 !important 抵抗网页自身样式，避免被 theme CSS 改得面目全非
+   ------------------------------------------------------------------ */
+.dst-block {
+  display: block !important;
+  /* 网页自己可能给 div 下 style（绝对定位 / 浮动 / 固定高度），
+     不压住的话译文会脱出文档流、盖在别的内容上 */
+  position: static !important;
+  inset: auto !important;
+  float: none !important;
+  clear: both !important;
+  transform: none !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  margin: 0.5em 0 0.7em !important;
+  padding: 0.15em 0.6em 0.15em 0.8em !important;
+  border-left: 3px solid rgba(77, 107, 254, 0.5) !important;
+  border-radius: 0 4px 4px 0 !important;
+  background: rgba(77, 107, 254, 0.055) !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
+  letter-spacing: normal;
+  width: auto !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+/* 「仅译文」模式下隐藏原文段落（DOM 保留，可无损还原） */
+.dst-src-hidden {
+  display: none !important;
+}
+
+/* 译文插在段落内部（li / td / blockquote…）时，原文被包进这个 span 再隐藏 */
+.dst-src-orig {
+  display: none !important;
+}
+
+/* 按元素背后的真实底色选字色：原文字色对比度不够时加这两个 class */
+.dst-block.dst-on-dark {
+  color: #e7ecf9 !important;
+  background: rgba(140, 165, 255, 0.12) !important;
+  border-left-color: rgba(150, 175, 255, 0.62) !important;
+}
+
+.dst-block.dst-on-light {
+  color: #1b2437 !important;
+  background: rgba(77, 107, 254, 0.06) !important;
+  border-left-color: rgba(77, 107, 254, 0.5) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dst-block {
+    background: rgba(120, 150, 255, 0.1) !important;
+    border-left-color: rgba(140, 165, 255, 0.6) !important;
+  }
+}

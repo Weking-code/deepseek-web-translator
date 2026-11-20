@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>文献笔记 · DeepSeek 网页翻译</title>
+    <link rel="stylesheet" href="notes.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="head">
+        <div class="logo">摘</div>
+        <div class="head-text">
+          <h1>文献笔记</h1>
+          <p class="sub">网页上的「摘」按钮会通过这个页面，把整理好的 Markdown 写进你选的文件夹。</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>保存位置</h2>
+        <p class="path" id="dirPath">还没有选择文件夹</p>
+        <div class="row">
+          <button class="btn primary" id="pickDir" type="button">选择文件夹…</button>
+        </div>
+        <p class="hint">
+          选一个总目录即可，每次保存会自动在里面新建
+          <code>2026-11-12-IEEE TEC-构网型风机</code> 这样的子文件夹。浏览器会记住它，只需选一次。
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>记录</h2>
+        <ul class="log" id="log"><li class="muted">暂无记录</li></ul>
+      </section>
+    </main>
+    <script src="notes.js"></script>
+  </body>
+</html>
